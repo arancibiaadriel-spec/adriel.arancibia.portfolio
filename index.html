@@ -149,37 +149,23 @@ section.s{padding-block:clamp(72px,10vw,140px)}
 .vbody h3{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:1.5rem;line-height:1}
 .vbody p{font-size:.92rem;color:var(--mid);line-height:1.5}
 
-/* CM CASES (formato caso de estudio) */
-.cases{display:flex;flex-direction:column;gap:clamp(20px,3vw,32px)}
-.case{display:grid;grid-template-columns:1fr minmax(220px,300px);gap:clamp(28px,5vw,72px);align-items:center;background:#fff;border:1px solid var(--line);padding:clamp(24px,4.5vw,64px)}
-.case:nth-child(even){grid-template-columns:minmax(220px,300px) 1fr}
-.case:nth-child(even) .case-phone{order:-1}
-.case.nophone{grid-template-columns:1fr}
-.case-head{display:flex;align-items:baseline;gap:18px 24px;flex-wrap:wrap;margin-bottom:26px}
-.case-name{position:relative;font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:clamp(3rem,7vw,5.6rem);line-height:.85;color:var(--blue);padding:0 .08em}
-.case-name svg{position:absolute;left:-6%;top:8%;width:112%;height:96%;overflow:visible;pointer-events:none}
-.case-name svg ellipse{fill:none;stroke:var(--lime);stroke-width:3;transform-origin:center}
-.case-tag{font-family:'Barlow',sans-serif;font-weight:600;font-size:clamp(1.15rem,2vw,1.6rem);line-height:1.15;color:var(--ink)}
-.case-meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
-.case-meta span{border:1px solid var(--line);padding:6px 10px;border-radius:100px;color:var(--mid)}
-.case-desafio{font-size:clamp(1.02rem,1.4vw,1.2rem);line-height:1.6;color:var(--mid);font-weight:300;max-width:780px}
-.case-desafio strong{color:var(--ink);font-weight:600}
-.case-sol{margin-top:30px}
-.case-sol h4{font-family:'Barlow',sans-serif;font-weight:600;font-size:1.15rem;margin-bottom:16px}
-.case-sol ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:18px 32px}
-.case-sol li{position:relative;padding-left:18px;color:var(--mid);font-weight:300;line-height:1.55}
-.case-sol li::before{content:'';position:absolute;left:0;top:.6em;width:7px;height:7px;background:var(--blue)}
-.case-sol li b{color:var(--ink);font-weight:600}
-.case-phone{position:relative;width:100%;max-width:300px;justify-self:center;aspect-ratio:9/16;border-radius:30px;background:var(--ink);padding:8px;box-shadow:0 26px 60px -24px rgba(0,58,235,.5)}
-.case-phone video,.case-phone img{width:100%;height:100%;object-fit:cover;border-radius:23px;background:#222}
-.case-phone button{position:absolute;inset:8px;border:0;background:transparent;cursor:pointer;border-radius:23px}
-.case-phone .snd{position:absolute;right:16px;bottom:16px;background:rgba(255,255,255,.92);color:var(--ink);padding:7px 11px;border-radius:100px;pointer-events:none}
-@media(max-width:860px){
-  .case,.case:nth-child(even){grid-template-columns:1fr}
-  .case:nth-child(even) .case-phone{order:0}
-  .case-phone{max-width:260px}
-  .case-sol ul{grid-template-columns:1fr}
-}
+/* CM CASES (tarjetas) */
+.cases{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:16px}
+.case{background:var(--ink);color:#fff;padding:clamp(24px,3vw,36px);display:flex;flex-direction:column;gap:18px;position:relative;overflow:hidden}
+.case::after{content:'';position:absolute;right:-60px;top:-60px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(0,58,235,.55),transparent 70%);pointer-events:none}
+.case .top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;position:relative;z-index:1}
+.case h3{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:clamp(2.2rem,3.4vw,3rem);line-height:.95}
+.case .rubro{color:rgba(255,255,255,.5);margin-top:8px}
+.case .num{color:var(--lime)}
+.case .tag{font-weight:500;font-size:1.05rem;color:var(--lime);line-height:1.3;position:relative;z-index:1}
+.case dl{display:grid;gap:16px;border-top:1px solid rgba(255,255,255,.12);padding-top:18px;position:relative;z-index:1}
+.case dt{color:rgba(255,255,255,.45);margin-bottom:4px}
+.case dd{color:rgba(255,255,255,.85);font-weight:300;line-height:1.55}
+.case dd strong{color:#fff;font-weight:500}
+.case ul{list-style:none;display:grid;gap:10px}
+.case li{position:relative;padding-left:16px}
+.case li::before{content:'';position:absolute;left:0;top:.62em;width:6px;height:6px;background:var(--blue)}
+.case li b{color:#fff;font-weight:500}
 
 /* PROCESS */
 .process{display:grid;grid-template-columns:repeat(4,1fr);border-top:1.5px solid var(--ink)}
@@ -339,7 +325,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
       <span class="ey mono">02 — Casos de redes (CM / SMM)</span>
       <h2 class="display s-title">Tres marcas,<br><em>tres desafíos.</em></h2>
     </div>
-    <p class="s-lead">Cada cuenta tenía un problema distinto. Acá está cómo lo pensé y qué hice, no solo cómo quedó.</p>
+    <p class="s-lead">Cada cuenta tenía un problema distinto. Acá está el desafío y cómo lo encaré.</p>
   </div>
   <div class="cases" id="cases"></div>
 </section>
@@ -468,40 +454,37 @@ const VIDEOS = [
   { marca:'La Casona', src:V+'la-casona-2.mp4', poster:V+'la-casona-2.jpg', formato:'Reel', titulo:'El sándwich perfecto', desc:'Producto en uso, de cerca y con hambre: el fiambre en su mejor momento.' },
 ];
 
-// CASOS (formato caso de estudio). video: archivo en assets/video/ (si queda vacío, el caso se muestra sin celular).
+// CASOS DE GESTIÓN DE REDES (tarjetas). En "desafio" podés usar <strong> para resaltar.
 const CASOS = [
   {
-    marca:'MariaTours', tag:'Una agencia con caras, no con folletos',
-    meta:['Agencia de viajes','Gestión de redes','Producción de contenido'],
-    desafio:'Las agencias de viajes compiten con plataformas online y con cientos de cuentas que publican las mismas fotos de destinos. <strong>El desafío: que MariaTours dejara de parecer un catálogo</strong> y se viera como un equipo de personas en quienes confiar para viajar, y que el contenido generara consultas reales.',
+    marca:'MariaTours', rubro:'Agencia de viajes', servicio:'Gestión de redes + producción de contenido',
+    tag:'Una agencia con caras, no con folletos.',
+    desafio:'Competir con plataformas online y cuentas que publican las mismas fotos de destinos. <strong>Que la agencia dejara de parecer un catálogo</strong> y el contenido generara consultas reales.',
     solucion:[
-      ['Estrategia de contenido','Equilibrar contenido de venta (salidas grupales con itinerario) con contenido humano: el equipo, el día a día y el detrás de escena.'],
-      ['Copywriting','Llamados a la acción concretos, como "comentá INFO y recibí el itinerario", para convertir vistas en conversaciones.'],
-      ['Estilo visual','El equipo a cámara, tendencias adaptadas a la marca y colores propios para que se reconozca al instante en el feed.'],
+      ['Estrategia','contenido de venta (salidas grupales) combinado con contenido humano: el equipo y el detrás de escena.'],
+      ['Copy','llamados a la acción concretos, como "comentá INFO y recibí el itinerario".'],
+      ['Visual','el equipo a cámara y tendencias adaptadas a la identidad de la marca.'],
     ],
-    video:'assets/video/mariatours-1.mp4', poster:'assets/video/mariatours-1.jpg',
   },
   {
-    marca:'San Carlos', tag:'Hacer protagonista a algo que nadie mira',
-    meta:['Agua, soda y hielo','Gestión de Instagram','Producción de contenido'],
-    desafio:'Agua, soda y hielo: productos de consumo diario, sin diferencias visibles frente a la competencia y que nadie "quiere ver" en redes. <strong>El desafío: darle a un producto de todos los días razones para aparecer en el feed</strong> y mantener la marca presente en la rutina de sus clientes.',
+    marca:'Productos San Carlos', rubro:'Agua, soda y hielo', servicio:'Gestión de Instagram + producción de contenido',
+    tag:'Hacer protagonista a algo que nadie mira.',
+    desafio:'Productos de consumo diario, sin diferencias visibles con la competencia. <strong>Darle a un producto de todos los días razones para aparecer en el feed.</strong>',
     solucion:[
-      ['Estrategia de contenido','Producto en uso y contenido útil: tutoriales (cómo cambiar el bidón), recetas con agua y momentos de actualidad, como la pausa de hidratación del Mundial 2026.'],
-      ['Copywriting','Cercano y cotidiano, sin lenguaje corporativo. Sumarse a tendencias sin pisar marcas registradas.'],
-      ['Estilo visual','Tomas macro y frescura (agua, hielo, menta), con el producto real en casas reales.'],
+      ['Estrategia','producto en uso y contenido útil: tutoriales, recetas y temas de actualidad.'],
+      ['Copy','cercano y cotidiano, sin lenguaje corporativo ni promesas vacías.'],
+      ['Visual','tomas macro y frescura, con el producto real en casas reales.'],
     ],
-    video:'assets/video/san-carlos-1.mp4', poster:'assets/video/san-carlos-1.jpg',
   },
   {
-    marca:'Gaggiotti', tag:'Ponerle cara a una inmobiliaria',
-    meta:['Inmobiliaria','Talento a cámara','Video vertical'],
-    desafio:'Los recorridos de propiedades suelen ser fríos: cámara que avanza, música genérica y nadie que te cuente nada. <strong>El desafío: que cada propiedad se mostrara como si te la presentara alguien de confianza</strong>, en un formato pensado para redes y para pauta.',
+    marca:'Gaggiotti', rubro:'Inmobiliaria', servicio:'Gestión de redes',
+    tag:'Que cada propiedad se entienda en un scroll.',
+    desafio:'Las cuentas inmobiliarias suelen ser una lista de "se vende" con fotos parecidas. <strong>Ordenar la comunicación para que la cuenta transmita confianza</strong> y cada publicación lleve a una consulta.',
     solucion:[
-      ['Rol','Presencia a cámara en los recorridos, trabajando sobre el guion del equipo de Gaggiotti.'],
-      ['Formato','Videos verticales de propiedades, varios por jornada de grabación, listos para orgánico y pauta.'],
-      ['Aporte','Naturalidad y ritmo a cámara: que el video se sienta como una visita, no como un aviso.'],
+      ['Estrategia','planificación del feed para alternar propiedades, información útil y marca.'],
+      ['Copy','datos claros de cada propiedad y un llamado a la acción en cada pieza.'],
+      ['Gestión','calendario de publicaciones y constancia, con un mismo estilo en toda la cuenta.'],
     ],
-    video:'', poster:'',
   },
 ];
 /* ===================================================================== */
@@ -541,20 +524,16 @@ function renderVideos(){
   g.addEventListener('click',e=>{const b=e.target.closest('.vmedia');if(b&&!b.disabled)openLB(+b.dataset.i);});
 }
 function renderCases(){
-  const ell='<svg viewBox="0 0 100 40" preserveAspectRatio="none" aria-hidden="true"><ellipse cx="50" cy="22" rx="49" ry="17" transform="rotate(-4 50 22)" vector-effect="non-scaling-stroke"/></svg>';
   $('#cases').innerHTML=CASOS.map((c,i)=>`
-    <article class="case rv${c.video?'':' nophone'}">
-      <div>
-        <div class="case-head"><h3 class="case-name">${esc(c.marca)}${ell}</h3><p class="case-tag">${esc(c.tag)}</p></div>
-        <div class="case-meta">${c.meta.map(m=>`<span class="mono">${esc(m)}</span>`).join('')}</div>
-        <p class="case-desafio">${c.desafio}</p>
-        <div class="case-sol"><h4>Solución:</h4><ul>${c.solucion.map(([t,d])=>`<li><b>${esc(t)}:</b> ${esc(d)}</li>`).join('')}</ul></div>
-      </div>
-      ${c.video?`<div class="case-phone"><video data-src="${esc(c.video)}" poster="${esc(c.poster)}" muted loop playsinline preload="none"></video><button aria-label="Ver video de ${esc(c.marca)} con sonido" data-v="${esc(c.video)}"></button><span class="snd mono">▶ Con sonido</span></div>`:''}
+    <article class="case rv">
+      <div class="top"><div><h3>${esc(c.marca)}</h3><div class="rubro mono">${esc(c.rubro)}</div></div><span class="num mono">${String(i+1).padStart(2,'0')}</span></div>
+      <p class="tag">${esc(c.tag)}</p>
+      <dl>
+        <div><dt class="mono">Servicio</dt><dd>${esc(c.servicio)}</dd></div>
+        <div><dt class="mono">El desafío</dt><dd>${c.desafio}</dd></div>
+        <div><dt class="mono">Solución</dt><dd><ul>${c.solucion.map(([t,d])=>`<li><b>${esc(t)}:</b> ${esc(d)}</li>`).join('')}</ul></dd></div>
+      </dl>
     </article>`).join('');
-  const io=new IntersectionObserver(es=>es.forEach(en=>{const v=en.target;if(en.isIntersecting){if(!v.src)v.src=v.dataset.src;if(!matchMedia('(prefers-reduced-motion:reduce)').matches)v.play().catch(()=>{});}else v.pause();}),{threshold:.3});
-  document.querySelectorAll('.case-phone video').forEach(v=>io.observe(v));
-  $('#cases').addEventListener('click',e=>{const b=e.target.closest('[data-v]');if(!b)return;const i=VIDEOS.findIndex(v=>v.src===b.dataset.v);if(i>-1)openLB(i);});
 }
 
 // Lightbox
