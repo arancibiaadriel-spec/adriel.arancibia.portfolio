@@ -86,6 +86,32 @@ section.s{padding-block:clamp(72px,10vw,130px)}
 .s-lead{max-width:460px;color:var(--mid);font-weight:300}
 .s-lead strong{color:var(--ink);font-weight:500}
 
+/* PAINS */
+.pains{display:grid;gap:1px;background:var(--line);border:1px solid var(--line)}
+.pain{display:grid;grid-template-columns:56px 1fr 1fr;gap:clamp(16px,3vw,40px);background:var(--cream);padding:clamp(20px,2.6vw,32px);align-items:start}
+.pain .n{color:var(--blue);padding-top:4px}
+.pain .mono{display:block;margin-bottom:8px}
+.pain .q .mono{color:var(--mid)}
+.pain .q p{font-size:clamp(1.05rem,1.5vw,1.25rem);font-weight:400;line-height:1.45}
+.pain .a .mono{color:var(--blue)}
+.pain .a p{color:var(--mid);font-weight:300}
+.pain .a p strong{color:var(--ink);font-weight:500}
+@media(max-width:760px){.pain{grid-template-columns:1fr;gap:12px}}
+.ugc{margin-top:16px;background:var(--blue);color:#fff;padding:clamp(24px,3.5vw,44px);display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,4vw,56px);align-items:end}
+.ugc .mono{color:var(--lime);display:block;margin-bottom:12px}
+.ugc h3{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:clamp(2rem,3.6vw,3.2rem);line-height:.95}
+.ugc p{color:rgba(255,255,255,.82);font-weight:300}
+.ugc p strong{color:#fff;font-weight:500}
+@media(max-width:860px){.ugc{grid-template-columns:1fr}}
+.brands{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:24px}
+.brands .mono{color:var(--mid);margin-right:6px}
+.brands span.b{border:1px solid var(--ink);padding:7px 12px;font-family:'Bebas Neue',sans-serif;font-size:1.15rem;letter-spacing:.04em;line-height:1}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.chip{border:1px solid var(--line);background:#fff;color:var(--ink);padding:9px 14px;border-radius:100px;cursor:pointer;transition:all .2s}
+.chip:hover{border-color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.gallery figure[hidden]{display:none}
+
 /* WHY */
 .why{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
 .why article{background:var(--cream);padding:clamp(24px,3vw,36px);display:flex;flex-direction:column;gap:12px}
@@ -217,6 +243,7 @@ footer a:hover{color:#fff}
   <div class="wrap hero-grid">
     <div>
       <span class="pill mono"><i></i><span id="h-pill">Disponible para viajar</span></span>
+      <span class="mono" style="display:block;color:var(--mid);margin-bottom:14px">( UGC + fotografía para turismo )</span>
       <h1 class="bebas">Contenido de viaje, <em>a cambio de la experiencia.</em></h1>
       <p class="hero-sub">Soy Adri, creador de contenido UGC y Social Media Manager. Hago canjes con <strong>hospedajes, tours y experiencias</strong>: cuento tu lugar como se vive de verdad, en reels, fotos e historias listos para tus redes, tu web y tus plataformas de reserva.</p>
       <div class="hero-ctas">
@@ -241,17 +268,22 @@ footer a:hover{color:#fff}
   </div>
 </div>
 
-<!-- POR QUÉ -->
+<!-- DOLORES -->
 <section class="s" id="por-que">
   <div class="wrap">
     <div class="s-head">
-      <div><span class="ey mono">01 — Por qué funciona</span><h2 class="s-title">No te vendo seguidores. <em>Te dejo contenido.</em></h2></div>
-      <p class="s-lead">Un canje tiene sentido cuando lo que recibís sirve después de que me voy. Por eso el foco está en <strong>material que usás vos</strong>, en tus canales, durante toda la temporada.</p>
+      <div><span class="ey mono">01 — Lo que le pasa a tu lugar</span><h2 class="s-title">Tu lugar es lindo. <em>El problema es cómo se ve.</em></h2></div>
+      <p class="s-lead">Esto es lo que más escucho de quienes tienen un hospedaje o venden experiencias. <strong>Y lo que hago con cada cosa.</strong></p>
     </div>
-    <div class="why">
-      <article class="rv"><span class="n mono">01</span><h3>Es tuyo para usar</h3><p>Fotos y videos con <strong>derecho de uso orgánico</strong> en tu Instagram, tu web, Booking, Airbnb o Google. Sin marcas de agua ni vencimiento.</p></article>
-      <article class="rv"><span class="n mono">02</span><h3>Tu lugar, en uso</h3><p>Las fotos de catálogo muestran camas vacías. Lo que vende es <strong>gente disfrutando el lugar</strong>: el desayuno, la vista, el fogón. Eso es lo que grabo.</p></article>
-      <article class="rv"><span class="n mono">03</span><h3>Con criterio de marketing</h3><p>Estudio Administración y Gestión de la Información y gestiono redes de marcas. Cada pieza tiene un objetivo: <strong>que alguien quiera reservar o vivirlo</strong>.</p></article>
+    <div class="pains">
+      <article class="pain rv"><span class="n mono">01</span><div class="q"><span class="mono">Lo que pasa</span><p>Las fotos del lugar muestran camas tendidas y cuartos vacíos. Se ven prolijas, pero no dan ganas de ir.</p></div><div class="a"><span class="mono">Lo que hago</span><p>Muestro el lugar <strong>en uso</strong>: el desayuno, la vista, el fogón, la vuelta después de la excursión. Lo que se siente estar ahí.</p></div></article>
+      <article class="pain rv"><span class="n mono">02</span><div class="q"><span class="mono">Lo que pasa</span><p>Entre check-ins, salidas y clientes, nadie tiene tiempo de grabar, editar y publicar. El Instagram queda quieto.</p></div><div class="a"><span class="mono">Lo que hago</span><p>Te dejo <strong>material para semanas</strong>: reels, fotos e historias editados, listos para subir sin tocar nada.</p></div></article>
+      <article class="pain rv"><span class="n mono">03</span><div class="q"><span class="mono">Lo que pasa</span><p>Un fotógrafo, un videógrafo y alguien que piense qué publicar son tres presupuestos distintos.</p></div><div class="a"><span class="mono">Lo que hago</span><p>Lo resuelvo yo solo: <strong>grabo, saco fotos y pienso la estrategia</strong>. Y muchas veces el pago es la estadía o la experiencia.</p></div></article>
+      <article class="pain rv"><span class="n mono">04</span><div class="q"><span class="mono">Lo que pasa</span><p>La gente decide dónde dormir o qué tour hacer mirando reels. Los videos de folleto, con música épica y drone, ya no convencen.</p></div><div class="a"><span class="mono">Lo que hago</span><p>Contenido <strong>UGC</strong>: contado en primera persona, como lo contaría un huésped. Es el formato en el que la gente confía.</p></div></article>
+    </div>
+    <div class="ugc rv">
+      <div><span class="mono">UGC + fotografía</span><h3>No es una producción. Es alguien que lo vivió, con ojo de fotógrafo.</h3></div>
+      <p>Hago las dos cosas: <strong>videos a cámara</strong>, naturales y con información útil, y <strong>fotos curadas</strong> de los espacios y los detalles, con un mismo estilo de edición. Todo con derecho de uso orgánico para tu Instagram, tu web y tus plataformas de reserva.</p>
     </div>
   </div>
 </section>
@@ -264,6 +296,7 @@ footer a:hover{color:#fff}
       <p class="s-lead">Contenido de turismo que grabé en Colombia: recorridos por hostels, experiencias y colaboraciones con marcas de viaje. Tocá cualquiera para verlo con sonido.</p>
     </div>
     <div class="vgrid" id="vgrid"></div>
+    <div class="brands"><span class="mono">Trabajé con</span><span class="b">MariaTours</span><span class="b">RedBus</span><span class="b">Viajero Hostel</span></div>
   </div>
 </section>
 
@@ -271,9 +304,10 @@ footer a:hover{color:#fff}
 <section class="s" id="fotos" style="padding-top:0">
   <div class="wrap">
     <div class="s-head">
-      <div><span class="ey mono">03 — Fotografía</span><h2 class="s-title">También <em>en foto.</em></h2></div>
+      <div><span class="ey mono">03 — Postales</span><h2 class="s-title">Mis postales <em>de viaje.</em></h2></div>
       <p class="s-lead">Viajo con cámara (Nikon D750) además del iPhone. Espacios, detalles y momentos editados con un mismo estilo, listos para feed o para tu ficha de reservas.</p>
     </div>
+    <div class="filters" id="gfilters" role="group" aria-label="Filtrar fotos por destino"></div>
     <div class="gallery" id="gallery"></div>
   </div>
 </section>
@@ -376,18 +410,26 @@ const VIDEOS = [
 
 const I='../assets/img/viajes/';
 const FOTOS = [
-  ['cartagena-beach-club','Beach club · Cartagena'],
-  ['tayrona-hamaca','Santa Marta'],
-  ['cartagena-getsemani','Getsemaní · Cartagena'],
-  ['tayrona-atardecer','Santa Marta'],
-  ['san-andres','San Andrés'],
-  ['cartagena-sombrillas','Beach club · Cartagena'],
-  ['providencia','Providencia'],
-  ['sierra-cascada','Santa Marta'],
-  ['cartagena-mural','Getsemaní · Cartagena'],
-  ['tayrona-playa','Santa Marta'],
-  ['cartagena-sunset','Cartagena'],
-  ['cartagena-fachada','Cartagena'],
+  // [archivo, destino, detalle]
+  ['cartagena-beach-club','Cartagena','Beach club'],
+  ['santa-marta-atardecer','Santa Marta','Atardecer en la terraza'],
+  ['san-andres-cayo','San Andrés','Johnny Cay'],
+  ['cartagena-balcones','Cartagena','Centro histórico'],
+  ['providencia-puente','Providencia','Puente de los enamorados'],
+  ['santa-marta-playa','Santa Marta','Playa'],
+  ['cartagena-getsemani','Cartagena','Getsemaní'],
+  ['san-andres-playa','San Andrés','Playa'],
+  ['providencia-banco','Providencia','Mirador'],
+  ['cartagena-casas','Cartagena','Centro histórico'],
+  ['santa-marta-hamaca','Santa Marta','Hamaca con vista'],
+  ['san-andres-buggies','San Andrés','Vuelta a la isla'],
+  ['cartagena-torre','Cartagena','Centro histórico'],
+  ['providencia-roca','Providencia','Tour en lancha'],
+  ['cartagena-catedral','Cartagena','Catedral'],
+  ['santa-marta-olas','Santa Marta','Costa'],
+  ['san-andres-peatonal','San Andrés','Peatonal'],
+  ['cartagena-auto','Cartagena','Centro histórico'],
+  ['cartagena-sunset','Cartagena','Sunset en barco'],
 ];
 
 // Propuestas por cantidad de noches
@@ -416,8 +458,13 @@ const io=new IntersectionObserver(es=>es.forEach(en=>{const vid=en.target;if(en.
 g.querySelectorAll('video').forEach(v=>io.observe(v));
 g.addEventListener('click',e=>{const b=e.target.closest('.vmedia');if(b)openLB(+b.dataset.i);});
 
-// Fotos
-$('#gallery').innerHTML=FOTOS.map(([f,c])=>`<figure class="rv"><img src="${I+f}.jpg" alt="${esc(c)}" loading="lazy" decoding="async"><figcaption class="mono">${esc(c)}</figcaption></figure>`).join('');
+// Fotos (filtro por destino)
+$('#gallery').innerHTML=FOTOS.map(([f,d,c])=>`<figure class="rv" data-d="${esc(d)}"><img src="${I+f}.jpg" alt="${esc(c+' · '+d)}" loading="lazy" decoding="async"><figcaption class="mono">${esc(c)} · ${esc(d)}</figcaption></figure>`).join('');
+(function(){
+  const ds=['Todos',...new Set(FOTOS.map(x=>x[1]))];const f=$('#gfilters');
+  f.innerHTML=ds.map((d,i)=>`<button class="chip mono" data-d="${esc(d)}" aria-pressed="${i===0}">${esc(d)}</button>`).join('');
+  f.addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;f.querySelectorAll('.chip').forEach(c=>c.setAttribute('aria-pressed',c===b));document.querySelectorAll('#gallery figure').forEach(fg=>{fg.hidden=!(b.dataset.d==='Todos'||fg.dataset.d===b.dataset.d);if(!fg.hidden)fg.classList.add('on');});});
+})();
 
 // Paquetes
 $('#packs').innerHTML=PAQUETES.map(p=>`
