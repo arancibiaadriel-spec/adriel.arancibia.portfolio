@@ -55,6 +55,7 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 /* HERO */
 .hero{padding-top:64px}
 .hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(24px,5vw,72px);align-items:center;padding-block:clamp(40px,7vw,96px)}
+.pill[hidden]{display:none}
 .pill{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:#fff;padding:8px 14px;border-radius:100px;margin-bottom:28px}
 .pill i{width:8px;height:8px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 0 rgba(212,255,58,.7);animation:pulse 2s infinite}
 @keyframes pulse{70%{box-shadow:0 0 0 8px rgba(212,255,58,0)}100%{box-shadow:0 0 0 0 rgba(212,255,58,0)}}
@@ -231,7 +232,7 @@ footer a:hover{color:#fff}
     <a href="../" class="logo">ADRIEL<b>.</b>ARANCIBIA</a>
     <ul class="nav-links mono">
       <li><a href="#trabajos">Trabajos</a></li>
-      <li><a href="#paquetes">Qué te llevás</a></li>
+      <li><a href="#paquetes">Qué incluye</a></li>
       <li><a href="#preguntas">Preguntas</a></li>
       <li><a href="../">Portfolio completo</a></li>
       <li><a href="#contacto" class="btn solid sm mono">Escribime</a></li>
@@ -242,7 +243,7 @@ footer a:hover{color:#fff}
 <header class="hero">
   <div class="wrap hero-grid">
     <div>
-      <span class="pill mono"><i></i><span id="h-pill">Disponible para viajar</span></span>
+      <span class="pill mono" id="h-pill-wrap" hidden><i></i><span id="h-pill"></span></span>
       <span class="mono" style="display:block;color:var(--mid);margin-bottom:14px">( UGC + fotografía para turismo )</span>
       <h1 class="bebas">Contenido de viaje, <em>a cambio de la experiencia.</em></h1>
       <p class="hero-sub">Soy Adri, creador de contenido UGC y Social Media Manager. Hago canjes con <strong>hospedajes, tours y experiencias</strong>: cuento tu lugar como se vive de verdad, en reels, fotos e historias listos para tus redes, tu web y tus plataformas de reserva.</p>
@@ -264,7 +265,7 @@ footer a:hover{color:#fff}
     <div><span class="mono">Trabajo con</span><b>Hospedajes · Tours · Gastronomía</b></div>
     <div><span class="mono">A cambio de</span><b>Estadía o experiencia</b></div>
     <div><span class="mono">Uso del material</span><b>Redes, web y reservas</b></div>
-    <div><span class="mono">Entrega</span><b>7 días</b></div>
+    <div><span class="mono">Propuesta</span><b>A medida de tu lugar</b></div>
   </div>
 </div>
 
@@ -316,11 +317,12 @@ footer a:hover{color:#fff}
 <section class="s" id="paquetes">
   <div class="wrap">
     <div class="s-head">
-      <div><span class="ey mono" style="color:var(--lime)">04 — Qué te llevás</span><h2 class="s-title">Según las noches, <em>el contenido.</em></h2></div>
-      <p class="s-lead">Tres propuestas para hospedajes. <strong>Si sos un tour o una experiencia, o tu lugar pide otra cosa, lo armamos a medida.</strong></p>
+      <div><span class="ey mono" style="color:var(--lime)">04 — Qué incluye</span><h2 class="s-title">Lo armamos <em>según tu lugar.</em></h2></div>
+      <p class="s-lead">No es lo mismo un hotel que un departamento familiar o una excursión. <strong>Me contás qué podés ofrecer y te armo una propuesta.</strong> Esto es lo que puede incluir:</p>
     </div>
     <div class="packs" id="packs"></div>
-    <p class="note">Todo se acuerda por escrito antes de viajar: fechas, entregables y plazos. Las comidas y los traslados corren por nuestra cuenta, salvo que quieras sumar alguna experiencia al contenido.</p>
+    <div class="hero-ctas" style="margin-top:28px"><a class="btn lime mono" id="cta-wa-prop" href="#contacto" target="_blank" rel="noopener">Contame de tu lugar ↗</a></div>
+    <p class="note">Todo se acuerda por escrito antes del viaje: qué incluye el canje, fechas, entregables y plazos. Las comidas y los traslados corren por nuestra cuenta, salvo que quieras sumar alguna experiencia al contenido.</p>
   </div>
 </section>
 
@@ -353,7 +355,7 @@ footer a:hover{color:#fff}
       <details><summary>¿Y si no soy un hospedaje?</summary><p>También trabajo con tours, excursiones, restaurantes y experiencias. En vez de noches, el canje es la experiencia, y el contenido se arma a medida.</p></details>
       <details><summary>¿Qué pasa si llueve?</summary><p>Siempre hay plan B de interiores: habitación, desayuno, espacios comunes, detalles. Un día gris también vende, si se cuenta bien.</p></details>
       <details><summary>¿Viajás solo o acompañado?</summary><p>Depende del viaje: a veces solo y a veces con alguien más. Lo aclaramos desde el primer mensaje. Viajar de a dos suma, porque el contenido muestra el lugar compartido, como lo vive la mayoría de tus huéspedes.</p></details>
-      <details><summary>¿Cuándo recibo el material?</summary><p id="faq-entrega">Dentro de los 7 días posteriores a la estadía, por Google Drive, en la mejor calidad.</p></details>
+      <details><summary>¿Cuándo recibo el material?</summary><p id="faq-entrega">Los plazos de entrega los acordamos al cerrar el canje. El material llega por Google Drive, en la mejor calidad.</p></details>
     </div>
   </div>
 </section>
@@ -396,7 +398,7 @@ const CONFIG = {
   asuntoMail: 'Canje de contenido de viaje',
   // Próximo viaje: completalo cuando tengas uno y aparece arriba de todo. Dejalo vacío ('') si no hay.
   proximoViaje: '',          // ej: 'Córdoba · 8 al 10 de diciembre'
-  personas: '',              // ej: '2 personas'. Vacío = no se muestra en los paquetes.
+  personas: '',              // ej: '2 personas' (por ahora no se muestra en ningún lado).
 };
 
 const V='../assets/video/';
@@ -433,10 +435,11 @@ const FOTOS = [
 ];
 
 // Propuestas por cantidad de noches
+// Lo que puede incluir un canje (se elige según el lugar)
 const PAQUETES = [
-  { noches:'1', titulo:'Para conocernos', items:['<b>1 reel / TikTok</b> recorriendo el lugar','<b>10 fotos</b> editadas','<b>3 historias</b> en mi Instagram, con mención'] },
-  { noches:'2', titulo:'El más pedido', hot:true, items:['<b>2 reels / TikToks</b>: recorrido + experiencia','<b>20 fotos</b> editadas','Historias durante toda la estadía','<b>Colaboración</b> en mi Instagram y TikTok'] },
-  { noches:'3+', titulo:'Contenido de temporada', items:['<b>3 reels / TikToks</b>, uno pensado para pauta','<b>30 fotos</b> editadas','Tomas extra para que edites tus propias piezas','Colaboración en mis redes + historias'] },
+  { titulo:'Video', items:['<b>Reels / TikToks</b> en primera persona: recorrido, experiencia, tips','Una pieza pensada para <b>pauta</b>, si la necesitás','Tomas extra para que edites tus propias piezas'] },
+  { titulo:'Foto', items:['<b>Fotos editadas</b> de espacios, detalles y momentos','Con un mismo estilo, listas para feed, web o tu ficha de reservas'] },
+  { titulo:'Difusión', items:['<b>Historias</b> durante la estadía o la experiencia','<b>Colaboración</b> en mi Instagram y TikTok','Derecho de uso orgánico del material en tus canales'] },
 ];
 /* ===================================================================== */
 
@@ -468,9 +471,8 @@ $('#gallery').innerHTML=FOTOS.map(([f,d,c])=>`<figure class="rv" data-d="${esc(d
 
 // Paquetes
 $('#packs').innerHTML=PAQUETES.map(p=>`
-  <article class="pack rv${p.hot?' hot':''}">
-    ${p.hot?'<span class="badge mono">Recomendado</span>':''}
-    <div><div class="nights">${esc(p.noches)}<small>${p.noches==='1'?'noche':'noches'}</small></div><div class="who mono">${esc(p.titulo)}${CONFIG.personas?' · '+esc(CONFIG.personas):''}</div></div>
+  <article class="pack rv">
+    <div class="nights">${esc(p.titulo)}</div>
     <ul>${p.items.map(i=>`<li>${i}</li>`).join('')}</ul>
   </article>`).join('');
 
@@ -483,10 +485,10 @@ $('#lbx').onclick=closeLB;lb.addEventListener('click',e=>{if(e.target===lb)close
 // Contacto
 (function(){
   const wa=`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(CONFIG.mensajeWhatsapp)}`;
-  $('#cta-wa').href=wa;$('#cta-wa-hero').href=wa;
+  $('#cta-wa').href=wa;$('#cta-wa-prop').href=wa;$('#cta-wa-hero').href=wa;
   $('#cta-mail').href=`mailto:${CONFIG.email}?subject=${encodeURIComponent(CONFIG.asuntoMail)}&body=${encodeURIComponent('Hola Adri! Te escribo de [nombre del lugar] en [ciudad].\n\nQué ofrecemos (noches / experiencia): \nQué nos gustaría mostrar: \n')}`;
   $('#mail-txt').textContent=CONFIG.email;
-  if(CONFIG.proximoViaje){$('#h-pill').textContent='Próximo viaje: '+CONFIG.proximoViaje;}
+  if(CONFIG.proximoViaje){$('#h-pill').textContent='Próximo viaje: '+CONFIG.proximoViaje;$('#h-pill-wrap').hidden=false;}
 })();
 
 // Aparición al hacer scroll
